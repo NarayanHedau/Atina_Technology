@@ -114,7 +114,7 @@ router.get("/getAll/users", auth.verify, async (req, res) => {
   }
 })
 
-router.post("/logout", async (req, res) => {
+router.post("/logout", auth.verify,  async (req, res) => {
   try {
     const userData = await userSession.deleteOne({ _id: req.body.userId });
     console.log(userData);

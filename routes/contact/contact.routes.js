@@ -27,7 +27,7 @@ router.post("/create", auth.verify, async (req, res) => {
   }
 })
 
-router.get("/get/contact/details", async (req, res) => {
+router.get("/get/contact/details", auth.verify,  async (req, res) => {
   try {
     const getDetails = await Contact.find().populate({ path: "created_by", select: "-password" })
     response.successResponse(res, 200, "Data fetched successfully", getDetails)
@@ -38,7 +38,7 @@ router.get("/get/contact/details", async (req, res) => {
   }
 })
 
-router.get("/get/user/details/with/contactDetails", async (req, res) => {
+router.get("/get/user/details/with/contactDetails", auth.verify,  async (req, res) => {
   try {
     const data = [];
     const userData = await User.find().select("-password")

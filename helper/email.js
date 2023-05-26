@@ -19,7 +19,6 @@ module.exports = {
         subject: option.subject,
         html: option.html,
       };
-      console.log(">>>>>>>>>>>>>>>>..mailOptions", mailOptions);
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);

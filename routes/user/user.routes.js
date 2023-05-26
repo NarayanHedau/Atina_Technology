@@ -142,21 +142,14 @@ router.get("/send/otp/forgot/password/:email", async (req, res) => {
             subject: "OTP sent",
             html: `The OTP is ${otp}`,
           };
-          console.log(">>>>>>>mailOptions", mailOptions);
           let emailSend = await email.sendMail(mailOptions)
-          console.log(">>>>>>>>>>>>emailsent", emailSend)
           if (emailSend) {
-            console.log("<<<<<<<<<<<<<>>>>>>>>>>>>>>>")
-            console.log("OTP sent on email Id")
             response.successResponse(res, 200, "otp sent " + otp);
-          } else {
-            console.log("Something went wrong")
-          }
+          } 
         }
       }
     }
   } catch (error) {
-    console.log(error);
     response.errorMsgResponse(res, 500, "Internal Server Error")
   }
 

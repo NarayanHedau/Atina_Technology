@@ -2,21 +2,24 @@ var nodemailer = require("nodemailer");
 
 
 module.exports = {
-  sendMail: (from, to, subject, body) => {
+  sendMail: (option) => {
     return new Promise((resolve, reject) => {
       var transporter = nodemailer.createTransport({
         service: "gmail",
+        secure: true,
+        port: 465,
         auth: {
-          user: "nhedau4786@gmail.com",
-          pass: "Golu@123",
+          user: "wankhedeabhijit6@gmail.com",
+          pass: "hnfbbibrqyifhdqj",
         },
       });
       var mailOptions = {
-        from: from,
-        to: to,
-        subject: subject,
-        html: body,
+        from: option.from,
+        to: option.to,
+        subject: option.subject,
+        html: option.html,
       };
+      console.log(">>>>>>>>>>>>>>>>..mailOptions", mailOptions);
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);

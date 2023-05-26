@@ -137,7 +137,7 @@ router.get("/send/otp/forgot/password/:email", async (req, res) => {
         if (updateOTP) {
 
           var mailOptions = {
-            from: "wankhedeabhijit6@gmail.com",
+            from: "temp1@gmail.com",
             to: req.params.email,
             subject: "OTP sent",
             html: `The OTP is ${otp}`,

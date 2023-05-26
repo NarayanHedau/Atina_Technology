@@ -9,8 +9,8 @@ module.exports = {
         secure: true,
         port: 465,
         auth: {
-          user: "wankhedeabhijit6@gmail.com",
-          pass: "hnfbbibrqyifhdqj",
+          user: "temp1@gmail.com",
+          pass: "temp@123",
         },
       });
       var mailOptions = {

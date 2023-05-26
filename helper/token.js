@@ -8,7 +8,7 @@ module.exports = {
     decrypt: function (req, userToken) {
       return new Promise((resolve, reject) => {
           var userData = jwt.verify(userToken, config.secreteKey);
-          console.log("userData", userData);
+          // console.log("userData", userData);
           userSession
           .findOne({
               _id: userData.sessionId,

@@ -116,7 +116,7 @@ router.get("/getAll/users", auth.verify, async (req, res) => {
 
 router.post("/logout", auth.verify,  async (req, res) => {
   try {
-    const userData = await userSession.deleteOne({ _id: req.body.userId });
+    const userData = await userSession.deleteOne({ userId: req.userId });
     console.log(userData);
     response.successResponse(res, 200, "Logout successfully");
   } catch (error) {
@@ -132,6 +132,7 @@ router.get("/send/otp/forgot/password/:email", async (req, res) => {
     })
     if (validData) {
       let otp = Math.floor(1000 + Math.random() * 9000)
+      console.log(">>>>>>>>>>>>oto", otp);
       if (req.params.email) {
         let updateOTP = await User.findOneAndUpdate({ email: req.params.email }, { otp: otp, })
         if (updateOTP) {

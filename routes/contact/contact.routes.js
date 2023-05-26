@@ -41,7 +41,7 @@ router.get("/get/contact/details", auth.verify,  async (req, res) => {
 router.get("/get/user/details/with/contactDetails", auth.verify,  async (req, res) => {
   try {
     const data = [];
-    const userData = await User.find().select("-password")
+    const userData = await User.find({_id: req.userId}).select("-password")
     const contactData = await Contact.find()
     for (let user of userData) {
       user = JSON.parse(JSON.stringify(user));
